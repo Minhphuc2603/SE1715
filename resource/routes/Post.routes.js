@@ -14,7 +14,8 @@ postRouter.post('/', async (req, res) => {
 });
 postRouter.get('/', async (req, res) => {
     try {
-        const data = await Post.find().populate('comments.user', 'name');
+        const data = await Post.find()
+        // .populate('comments.user', 'name');
         const result = data.map(post => {
             const { createdAt, updatedAt, __v, ...postData } = post._doc;
             return { ...postData };
